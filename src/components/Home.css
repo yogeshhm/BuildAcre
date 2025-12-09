@@ -276,3 +276,20 @@
     padding: 5rem 1.5rem 3rem;
   }
 }
+
+/* --- RESPONSIVE SECTION ADJUSTMENT --- */
+@media (max-width: 900px) {
+  /* Set the scroll section to a reasonable size on mobile */
+  .scroll-section {
+    height: 100vh; /* Reduced from 250vh */
+    padding-top: 64px;
+    position: relative;
+  }
+  
+  /* Make the wrapper static on mobile */
+  .scroll-video-wrapper {
+    position: relative; /* Change from sticky to relative */
+    top: 0;
+    height: calc(100vh - 64px); /* Fills the rest of the 100vh section */
+  }
+}
