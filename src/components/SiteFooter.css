@@ -1,0 +1,165 @@
+/* --- 1. Base Footer Styles --- */
+.site-footer {
+    background-color: #1A232E; 
+    
+    /* Adding a subtle radial gradient for a "glow" or glass-like sheen */
+    background-image: radial-gradient(
+        circle at 50% 10%, /* Start the glow near the top center */
+        rgba(60, 76, 100, 0.2), /* Subtle Blue Tint at 20% opacity */
+        #1A232E 50% /* Fades back to the base color */
+    );
+    
+    color: #f4f4f4; 
+    padding-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+    
+    /* CSS GRID for Responsive Columns */
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* 2 parts for Brand, 1 part for others */
+    gap: 40px; /* Space between columns */
+    padding-bottom: 50px;
+}
+
+/* --- 2. Shared Column Styles --- */
+.footer-column h4 {
+    color: #F6C153; /* Safety Orange for section headings */
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.footer-column a {
+    color: inherit; /* Inherit light gray color */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #F6C153; /* Highlight orange on hover */
+}
+
+/* --- 3. Brand Column Specifics --- */
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.footer-motto {
+    font-style: italic;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.cta-link {
+    display: inline-block;
+    background-color: #F6C153; 
+    color: #1A232E !important; /* Text color now matches the new dark background */
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.cta-link:hover {
+    background-color: #fff;
+    color: #1A232E !important;
+}
+
+.icon-marker {
+    margin-right: 8px;
+}
+
+/* --- 4. Social Icons --- */
+.social-icons {
+    display: flex;
+    flex-direction: column; /* Stack icons vertically */
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem; /* Adjust if using text labels */
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+    width: 25px;
+    margin-right: 10px;
+    color: #F6C153;
+}
+
+.icon-label {
+    opacity: 0.9;
+}
+
+
+/* --- 5. Footer Bottom Bar (Copyright) --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.footer-bottom a {
+    color: inherit;
+    text-decoration: none;
+    margin-left: 15px;
+}
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* --- 6. Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .footer-container {
+        /* Stack columns vertically on mobile */
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+    
+    .footer-column {
+        padding-bottom: 20px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1); /* Visual separation */
+    }
+    
+    .brand-column {
+        /* Remove border from the last column on mobile */
+        border-bottom: none; 
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom p, .footer-bottom .legal-links {
+        margin: 5px 0;
+    }
+}

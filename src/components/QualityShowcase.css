@@ -1,0 +1,87 @@
+/* --- Base Showcase Container --- */
+.quality-showcase-section {
+    /* Full width band */
+    width: 100%;
+    /* Use a generous height to make the image visible */
+    height: 450px; 
+    
+    /* Image Styling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    position: relative;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+/* --- Dark Overlay for Text Contrast --- */
+.showcase-overlay {
+    /* Use a semi-transparent version of your dark brand color (#1A232E) */
+    background-color: rgba(26, 35, 46, 0.7); /* 70% opacity */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* --- Content Styling --- */
+.showcase-content {
+    max-width: 900px;
+    padding: 0 20px;
+    color: white;
+    z-index: 10;
+}
+
+.showcase-headline {
+    /* Responsive font size */
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+}
+
+.showcase-subtext {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 300;
+    margin: 0 auto 30px auto;
+    opacity: 0.9;
+}
+
+/* --- Link/CTA Styling (Safety Orange Accent) --- */
+.showcase-link {
+    display: inline-block;
+    color: #F6C153; /* Safety Orange Text */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #F6C153; /* Subtle underline effect */
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.showcase-link:hover {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+/* --- Responsiveness: Adjust height for mobile --- */
+@media (max-width: 768px) {
+    .quality-showcase-section {
+        height: 350px; /* Reduced height on mobile */
+    }
+    
+    .showcase-headline {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .showcase-subtext {
+        margin-bottom: 20px;
+    }
+}

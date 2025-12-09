@@ -7,6 +7,11 @@ import ParallaxSection from "./components/ParallaxSection";
 import ImageScrollCarousel from "./components/Images/ImageScrollCarousel";
 import InteractiveUI from "./components/InteractiveUI";
 import CardSwap, { Card } from "./components/CardSwap";
+import HeroCream from "./components/HeroCream";
+import TestimonialParallax from "./components/TestimonialParallax";
+import SiteFooter from "./components/SiteFooter";
+import ImpactBanner from "./components/ImpactBanner";
+import QualityShowcase from "./components/QualityShowcase";
 const style = {
   jon:{
   maxWidth: '1440px',
@@ -30,7 +35,11 @@ const Display = () => {
       <TestComp />
       <ImageScrollCarousel />
       <InteractiveUI />
-
+    <ImpactBanner />
+    <QualityShowcase />
+    <TestimonialParallax />
+    <HeroCream />
+    <SiteFooter />
       {/* <div style={{ height: "600px", position: "relative", maxWidth:"1400px" }}>
         <CardSwap
           width={420}

@@ -8,6 +8,8 @@ const ImageScrollCarousel = () => {
   // Use a ref to store startX for use across functional updates without re-renders
   const startXRef = useRef(0); 
 
+
+
   const speedWheel = 0.02;
   const speedDrag = -0.1;
 
@@ -71,7 +73,18 @@ const itemsData = [
   }, []);
 
   // Main animation logic synchronized with the progress state
-  useEffect(() => {
+// --- ProjectsReels.jsx (Modified useEffect block) ---
+
+useEffect(() => {
+    // 1. Get current viewport width to determine the spread factor
+    const viewportWidth = window.innerWidth;
+    
+    // 2. Define dynamic spread factors:
+    // Large spread for Desktop (> 768px), smaller spread for Mobile
+    const spreadFactorX = viewportWidth > 768 ? 800 : 400; // Example: 800% (Desktop) vs 400% (Mobile)
+    const spreadFactorY = viewportWidth > 768 ? 200 : 50;  // Example: 200% (Desktop) vs 50% (Mobile)
+    const rotationFactor = viewportWidth > 768 ? 120 : 60; // Example: 120deg (Desktop) vs 60deg (Mobile)
+
     const boundedProgress = Math.max(0, Math.min(progress, 100));
     const activeIndex = Math.floor(boundedProgress / 100 * (totalItems - 1));
 
@@ -83,14 +96,18 @@ const itemsData = [
         // These CSS vars are used in ImageScroll.css for transform/opacity
         item.style.setProperty('--zIndex', zIndex);
         item.style.setProperty('--active', activeValue);
-        item.style.setProperty('--x', `calc(${activeValue} * 800%)`);
-        item.style.setProperty('--y', `calc(${activeValue} * 200%)`);
-        item.style.setProperty('--rot', `calc(${activeValue} * 120deg)`);
-        // Opacity logic derived from original CSS formula but applied dynamically here:
+        
+        // --- APPLY DYNAMIC SPREAD HERE ---
+        item.style.setProperty('--x', `calc(${activeValue} * ${spreadFactorX}%)`);
+        item.style.setProperty('--y', `calc(${activeValue} * ${spreadFactorY}%)`);
+        item.style.setProperty('--rot', `calc(${activeValue} * ${rotationFactor}deg)`);
+        
+        // Opacity logic remains the same
         item.style.setProperty('--opacity', `${(zIndex / totalItems * 3 - 2)}`);
       }
     });
-  }, [progress, getZindex, totalItems]);
+    // Add progress to the dependency array if you haven't already
+}, [progress, getZindex, totalItems]);
 
   const handleWheel = useCallback((e) => {
     const wheelProgress = e.deltaY * speedWheel;

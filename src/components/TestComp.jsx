@@ -4,6 +4,7 @@ import "./TestComp.css";
 export default function TestComp() {
   const wrapperRef = useRef(null);
   const [scale, setScale] = useState(0.9); // starting zoom
+  
 
   // Sketchfab embed URL with slow spin & UI hidden
   const embedUrl =

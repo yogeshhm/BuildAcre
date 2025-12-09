@@ -1,16 +1,22 @@
+/* --- Global & Container Styles (Matching BuildAcre's Dark Palette) --- */
 .hero {
+  /* Using your suggested font family */
   font-family: "Funnel Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-    padding-top: 50px;
-    padding-bottom: 50px;
+  padding-top: 80px; /* Increased padding */
+  padding-bottom: 80px; /* Increased padding */
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  /* Removed min-height: 100vh here to let content dictate height (better flow) */
+  min-height: 900px; /* Ensure a minimum height */
   color: #ffffff;
-  /* Set your generated background image here */
-  background: url("./assets/Homeimg1.jpg") center/cover no-repeat;
+  
+  /* Set your generated background image here - Make sure this path is correct */
+  /* Using the image provided in your previous component request */
+  background: url("../assets/Homeimg1.jpg") center/cover no-repeat;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,12 +26,15 @@
   width: 100%;
   height: 100%;
   padding: 40px 60px;
+  
+  /* Adjusted Gradient: Use the dark slate color (#1A232E) for a smooth transition */
   background: linear-gradient(
-    -20deg,
-    rgba(0, 0, 0, 0.55),
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.15)
+    -90deg,
+    rgba(26, 35, 46, 0.75), /* Night Slate - 75% opacity */
+    rgba(26, 35, 46, 0.55), /* Night Slate - 55% opacity */
+    rgba(26, 35, 46, 0.3)  /* Night Slate - 30% opacity */
   );
+  
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -36,11 +45,11 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.1fr 1.3fr;
-  gap: 40px;
+  gap: 60px; /* Increased gap for better spacing */
   align-items: center;
 }
 
-/* Left side - 3D house mockup */
+/* --- Left side - 3D house mockup --- */
 .hero-left {
   display: flex;
   align-items: center;
@@ -52,49 +61,66 @@
   max-width: 520px;
   aspect-ratio: 4 / 3;
   border-radius: 14px;
-  background: url("../assets/Homeimg1.jpg") center/cover no-repeat;
+  
+  /* MOCKUP IMAGE: Set the image for the card (using the same image path as the background for consistency) */
+  background: url("YOUR_ACTUAL_PATH_TO/cns2.jpeg") center/cover no-repeat;
+  
+  /* Premium Shadowing */
   box-shadow:
-    0 22px 45px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.08);
+    0 25px 50px rgba(0, 0, 0, 0.5), /* Deeper shadow */
+    0 0 0 1px rgba(255, 255, 255, 0.1); /* Subtle white border */
+  
+  /* Optional: Give the card a subtle 3D tilt effect on hover for interactivity */
+  transform: perspective(1000px) rotateY(-5deg); 
+  transition: transform 0.5s ease;
 }
 
-/* Right side - text */
+.hero-house-card:hover {
+    transform: perspective(1000px) rotateY(0deg); 
+}
+
+/* --- Right side - text --- */
 .hero-right {
-  color: #eaf5f8;
+  color: #FFFFFF; /* Ensure pure white for best contrast */
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 3.5rem; /* Slightly larger headline */
   line-height: 1.1;
   margin-bottom: 24px;
   font-weight: 700;
+  color: #F6C153; /* Use Safety Orange accent on the main title */
 }
 
 .hero-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 14px;
+  font-size: 1.05rem; /* Slightly larger base text */
+  line-height: 1.8;
+  margin-bottom: 16px;
   max-width: 640px;
-  color: #d5e8ed;
+  color: #d5e8ed; /* Light gray text */
 }
 
+/* --- CTA Button (Using Safety Orange Brand Color) --- */
 .hero-button {
-  margin-top: 24px;
-  padding: 12px 32px;
+  margin-top: 30px;
+  padding: 14px 35px; /* Slightly larger padding */
   border-radius: 6px;
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: #ffffff;
-  background: #1ca3b8;
+  
+  /* Brand Color Integration */
+  color: #1A232E; /* Text in Night Slate */
+  background: #F6C153; /* Safety Orange CTA */
+  
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .hero-button:hover {
-  background: #1690a3;
+  background: #ffe6ac; /* Lighter hover color */
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
@@ -104,8 +130,13 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
 
-/* Responsive */
+/* --- Responsive (Mobile) --- */
 @media (max-width: 900px) {
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
   .hero-overlay {
     padding: 24px 20px;
   }
@@ -115,7 +146,24 @@
     gap: 28px;
   }
 
+  /* Stacked content order fix: Show image BEFORE text on mobile */
+  .hero-left {
+    order: 1; /* House image first */
+  }
+
+  .hero-right {
+    order: 2; /* Text second */
+  }
+
   .hero-title {
     font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-house-card {
+      /* Card takes up more space on mobile */
+      max-width: 100%; 
+      aspect-ratio: 16 / 12; /* Slightly wider card on mobile */
+      transform: perspective(1000px) rotateY(0deg); /* Disable 3D tilt on mobile */
   }
 }

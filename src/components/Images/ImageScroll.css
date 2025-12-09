@@ -3,12 +3,16 @@
 /* All rules have been modified to start with .image-scroll-container */
 
 
-.image-scroll-container .carousel {
+.image-scroll-container  {
   position: relative;
   z-index: 1;
-  height: 100vh;
+  height: 60vh;        /* instead of 100vh */
+  min-height: 400px;
   overflow: hidden;
   pointer-events: none;
+}
+.image-scroll-container .carousel {
+  /* z-index: 1; */
 }
 
 .image-scroll-container .carousel-item {
@@ -191,7 +195,42 @@
   transition-duration: .7s;
 }
 
+/* --- New Mobile Media Query for the Carousel Layout --- */
+@media (max-width: 768px) {
+    /* 1. Reduce height of the main carousel area */
+    .image-scroll-container  {
+        max-height: 60vh; /* Reduced height on mobile */
+        min-height: 400px;
+    }
 
+    /* 2. Slightly increase base size of items on mobile for readability */
+    .image-scroll-container .carousel-item {
+        /* Redefine fluid size for better mobile tap target, clamp is already good, 
+           but we can optimize the rotation origin if needed. */
+        transform-origin: 50% 50%; /* Center origin for less 'swing' on mobile */
+        --height: clamp(200px, 60vw,  350px);
+    }
+
+    /* 3. Adjusting text size for mobile (optional, but good practice) */
+    .image-scroll-container .title {
+        font-size: 20px;
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .image-scroll-container .num {
+        font-size: 60px;
+        top: 5px;
+        left: 15px;
+    }
+
+    /* 4. Hide secondary elements that clutter small screens */
+    .image-scroll-container .layout::before,
+    .image-scroll-container .box,
+    .image-scroll-container .logo {
+        display: none;
+    }
+}
 
 
 @font-face {
