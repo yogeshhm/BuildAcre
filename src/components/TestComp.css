@@ -1,0 +1,57 @@
+:root {
+/* --model-bg: #f2f2f0; */
+/* --model-bg: #e5e5e3; */
+/* --model-bg: #faf7f2; */
+/* --model-bg: #f3ede8; */
+--model-bg: #f6f7f8;
+
+
+}
+
+/* Section wrapper */
+.model-section {
+  width: 100%;
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+
+/* Element that scales on scroll */
+.model-wrapper {
+  width: min(1100px, 100%);
+  padding: 0 1.5rem;
+  transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+}
+
+/* Clipping box – defines final visible area */
+.model-clip {
+  width: 100%;
+  height: clamp(320px, 60vh, 560px);
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--model-bg);
+  position: relative;
+}
+
+/* Iframe is taller + shifted up so top & bottom UI bars are hidden */
+.model-iframe {
+  width: 100%;
+  height: calc(100% + 110px); /* 55 top + 55 bottom hidden */
+  margin-top: -55px;
+  border: none;
+  display: block;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .model-wrapper {
+    padding: 0 1rem;
+  }
+
+  .model-clip {
+    border-radius: 18px;
+    height: clamp(260px, 55vh, 480px);
+  }
+}

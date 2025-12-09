@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --color-text-main: #1d1b1b;
+  --color-text-light: #f0f0f0;
+  --color-nav-bg: rgba(255, 255, 255, 0.06);
+  --color-nav-border: rgba(255, 255, 255, 0.1);
+  --color-overlay-bg: rgba(0, 0, 0, 0.65);
+  --color-cta-1: #ff4b81;
+  --color-cta-2: #ffb347;
+}
+
+/* Page base */
+.home {
+  /* min-height: 100vh; */
+  background: transparent;
+  color: var(--color-text-main);
+  font-family: "Funnel Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* -------------------------------
+   NAVBAR – glass, on top of video
+-------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  background: var(--color-nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--color-nav-border);
+  max-width: 1400px;
+  padding: 0.6rem 0;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #151414;
+}
+
+/* Desktop links */
+.nav-center {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-center button {
+  background: none;
+  border: none;
+  color: #151414;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.25s ease;
+}
+
+.nav-center button:hover {
+  opacity: 0.7;
+}
+
+/* CTA */
+.nav-cta {
+  padding: 0.5rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, var(--color-cta-1), var(--color-cta-2));
+  color: #050608;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Burger button */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  margin-left: 0.75rem;
+  cursor: pointer;
+}
+
+/* Burger icon lines */
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.burger span {
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-text-light);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Burger animation when open */
+.burger-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.burger-open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* -------------------------------
+   MOBILE MENU
+-------------------------------- */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.3rem 2rem 1.8rem;
+
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 40;
+
+  background: var(--color-overlay-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.mobile-nav--open {
+  display: flex;
+}
+
+.mobile-link {
+  background: none;
+  border: none;
+  text-align: left;
+  color: #ffffff;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.mobile-cta {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--color-cta-1), var(--color-cta-2));
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* -------------------------------
+   SCROLL / VIDEO SECTION
+-------------------------------- */
+.scroll-section {
+  height: 250vh;
+  padding-top: 64px; /* offset for fixed navbar */
+}
+
+.scroll-video-wrapper {
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Video fills wrapper */
+.scroll-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text over video */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  pointer-events: none;
+  color: #ffffff;
+}
+
+.hero-overlay h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero-overlay p {
+  max-width: 480px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Rest of the page */
+.content-section {
+  padding: 6rem 3rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* -------------------------------
+   RESPONSIVE
+-------------------------------- */
+@media (max-width: 900px) {
+  .nav-center {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .content-section {
+    padding: 5rem 1.5rem 3rem;
+  }
+}

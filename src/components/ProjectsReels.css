@@ -1,0 +1,69 @@
+.reels-section {
+  width: 100%;
+  padding: 40px 0;
+  background-color: #f4f4f4;
+}
+
+.reels-heading {
+  text-align: center;
+  font-family: sans-serif;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+/* --- HORIZONTAL CAROUSEL --- */
+.reels-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 20px;
+  scroll-behavior: smooth;
+  
+  /* Hide scrollbar */
+  -webkit-overflow-scrolling: touch; 
+}
+.reels-carousel::-webkit-scrollbar {
+  display: none;
+}
+.reels-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* --- THE CARD --- */
+.reel-card {
+  flex: 0 0 auto;
+  /* Fixed dimensions for the "Window" */
+  width: 328px; 
+  height: 580px; /* Adjust this height to crop the bottom footer */
+  
+  border-radius: 12px;
+  overflow: hidden; /* This cuts off the parts sticking out */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: black; /* Background black while loading */
+  position: relative;
+}
+
+/* --- THE CROP MECHANISM --- */
+.crop-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Ensures the hidden parts don't show */
+  position: relative;
+}
+
+.iframe-shifter {
+  /* CRITICAL: This pulls the iframe UP to hide the profile header.
+     If you still see the header, increase this negative number (e.g. -65px).
+  */
+  margin-top: -58px; 
+  
+  /* This ensures the bottom part (comments/likes) is pushed 
+     out of the visible .reel-card area.
+  */
+  height: 120%; 
+  pointer-events: auto; /* Ensures play button still works */
+}
+
+/* OPTIONAL: Disable pointer events on the top/bottom areas to prevent clicking 'View Profile' by accident if it barely shows */

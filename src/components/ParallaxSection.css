@@ -1,0 +1,57 @@
+.parallax-container {
+  /* The Parallax Magic */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+  display: flex;
+  align-items: center; /* Vertically centers text */
+  justify-content: center; /* Horizontally centers text */
+  width: 100%;
+}
+
+/* The dark tint overlay */
+.parallax-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* 50% Black opacity */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-content {
+  text-align: center;
+  color: white;
+  padding: 20px;
+  z-index: 2; /* Ensures text is above the overlay */
+  max-width: 800px;
+}
+
+.parallax-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.parallax-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Mobile Fix: Parallax often breaks on phones, this disables it smoothly */
+@media only screen and (max-device-width: 1024px) {
+  .parallax-container {
+    background-attachment: scroll;
+  }
+}
