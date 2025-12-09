@@ -2,9 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import "./TestComp.css";
 
 export default function TestComp() {
-  const wrapperRef = useRef(null);
-  const [scale, setScale] = useState(0.9); // starting zoom
+  // 1. REMOVE THE useRef FOR SCROLL CALCULATION (no longer needed)
+  // const wrapperRef = useRef(null); 
   
+  // 2. SET scale TO A FIXED VALUE (e.g., 1 or the starting 0.9)
+  // We can just use a constant or set the initial state
+  const scale = 1; // Fixed scale: no zoom/scroll effect
 
   // Sketchfab embed URL with slow spin & UI hidden
   const embedUrl =
@@ -25,7 +28,9 @@ export default function TestComp() {
     "&ui_hint=0" +
     "&ui_theme=dark";
 
-  // Scroll → scale wrapper
+  // 3. REMOVE THE ENTIRE useEffect BLOCK
+  // This hook is responsible for the scroll-to-scale effect.
+  /*
   useEffect(() => {
     const handleScroll = () => {
       const el = wrapperRef.current;
@@ -56,6 +61,7 @@ export default function TestComp() {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
+  */
 
   return (
     <>
@@ -67,10 +73,12 @@ export default function TestComp() {
       </h2>
     <section className="model-section">
       
+      {/* 4. KEEP THE wrapperRef IF YOU WANT TO KEEP THE CSS TRANSITION */}
+      {/* We can remove the ref since it's no longer used */}
       <div
-        ref={wrapperRef}
         className="model-wrapper"
-        style={{ transform: `scale(${scale})` }}
+        // 5. Apply the fixed scale
+        style={{ transform: `scale(${scale})` }} 
       >
         <div className="model-clip">
           <iframe
